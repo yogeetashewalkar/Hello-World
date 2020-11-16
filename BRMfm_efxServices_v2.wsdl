@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+                   xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" 
+                   xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" 
+                   xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="fm_efx" 
+                   targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" 
+                targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+            <include schemaLocation="EFX_OP_MS_CREATE_ORDER_STAGING.xsd"/>
+            <include schemaLocation="EFX_OP_GET_CONTRACT_PRICING.xsd"/>
+        </schema>
+    </types>
+    <message name="EFX_OP_MS_CREATE_ORDER_STAGING_inmsg">
+        <part element="brm:efxOpMsCreateOrderStagingRequest" name="EFX_OP_MS_CREATE_ORDER_STAGING_REQ"/>
+    </message>
+    <message name="EFX_OP_MS_CREATE_ORDER_STAGING_outmsg">
+        <part element="brm:efxOpMsCreateOrderStagingResponse" name="EFX_OP_MS_CREATE_ORDER_STAGING_RES"/>
+    </message>
+    <message name="EFX_OP_GET_CONTRACT_PRICING_inmsg">
+        <part element="brm:efxOpGetContractPricingRequest" name="EFX_OP_GET_CONTRACT_PRICING_REQ"/>
+    </message>
+    <message name="EFX_OP_GET_CONTRACT_PRICING_outmsg">
+        <part element="brm:efxOpGetContractPricingResponse" name="EFX_OP_GET_CONTRACT_PRICING_RES"/>
+    </message>
+    <portType name="BRMfm_efxService_ptt">
+        <operation name="efxOpMsCreateOrderStaging">
+            <input message="brm:EFX_OP_MS_CREATE_ORDER_STAGING_inmsg" name="EFX_OP_MS_CREATE_ORDER_STAGING_inmsg"/>
+            <output message="brm:EFX_OP_MS_CREATE_ORDER_STAGING_outmsg" name="EFX_OP_MS_CREATE_ORDER_STAGING_outmsg"/>
+        </operation>
+        <operation name="efxOpGetContractPricing">
+            <input message="brm:EFX_OP_GET_CONTRACT_PRICING_inmsg" name="EFX_OP_GET_CONTRACT_PRICING_inmsg"/>
+            <output message="brm:EFX_OP_GET_CONTRACT_PRICING_outmsg" name="EFX_OP_GET_CONTRACT_PRICING_outmsg"/>
+        </operation>
+    </portType>
+    <binding name="BRMfm_efxService_binding" type="brm:BRMfm_efxService_ptt">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="efxOpMsCreateOrderStaging">
+            <soap:operation SoapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/efxOpMsCreateOrderStaging"/>
+            <input name="EFX_OP_MS_CREATE_ORDER_STAGING_inmsg">
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"/>
+            </input>
+            <output name="EFX_OP_MS_CREATE_ORDER_STAGING_outmsg">
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"/>
+            </output>
+        </operation>
+        <operation name="efxOpGetContractPricing">
+            <soap:operation SoapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/efxOpGetContractPricing"/>
+            <input name="EFX_OP_GET_CONTRACT_PRICING_inmsg">
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"/>
+            </input>
+            <output name="EFX_OP_GET_CONTRACT_PRICING_outmsg">
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="BRMfm_efxServices_v2">
+        <port binding="brm:BRMfm_efxService_binding" name="BRMfm_efxService_pt">
+            <soap:address location="http://localhost:8080/brm/BRMWSfm_efxServices_v2"/>
+        </port>
+    </service>
+    <plt:partnerLinkType name="BRMfm_efxService_plt">
+        <plt:role name="BRMfm_efxService_role">
+            <plt:portType name="brm:BRMfm_efxService_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+</definitions>
