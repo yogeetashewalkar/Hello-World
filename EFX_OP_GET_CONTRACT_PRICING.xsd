@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?><!--Copyright (c) 2015 Oracle. All rights reserved.
+This material is the confidential property of Oracle Corporation or its licensors and may be used, reproduced, stored or transmitted only in accordance with a valid Oracle license or sublicense agreement.--><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" elementFormDefault="qualified" xmlns="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:op="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+  <xsd:element name="efxOpGetContractPricingRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="EFX_OP_GET_CONTRACT_PRICING_Request" type="EFX_OP_GET_CONTRACT_PRICING_RequestType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="EFX_OP_GET_CONTRACT_PRICING_RequestType">
+    <xsd:sequence>
+      <xsd:element name="flags" type="xsd:int"/>
+      <xsd:element name="EFX_OP_GET_CONTRACT_PRICING_inputFlist">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="EFX_FLD_EFXID" minOccurs="0" maxOccurs="1">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="60"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="EFX_FLD_FULFILLMENT_ID" minOccurs="0" maxOccurs="1">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="60"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="POID" minOccurs="1" maxOccurs="1">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:pattern value="([0-9]*\.)+[0-9]*(\s)+(((/)*|(/)(account)((/)*([a-zA-Z_]*))*))(\s)+[0-9]+(\s)+[0-9]*"/>
+                  <xsd:pattern value=""/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="PROGRAM_NAME" minOccurs="0" maxOccurs="1">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="60"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="efxOpGetContractPricingResponse">
+    <xsd:complexType>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="EFX_FLD_EFXID" minOccurs="0" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="60"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="EFX_FLD_FULFILLMENT_INFO" minOccurs="0" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="EFX_FLD_FULFILLMENT_INFO_ARRAY_EFX_OP_GET_CONTRACT_PRICING_1216">
+                <xsd:attribute name="elem" type="xsd:string"/>
+              </xsd:extension>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="ERROR_CODE" minOccurs="0" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="60"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="ERROR_DESC" minOccurs="0" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="60"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="POID" minOccurs="1" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:pattern value="([0-9]*\.)+[0-9]*(\s)+(((/)*|(/)(account)((/)*([a-zA-Z_]*))*))(\s)+[0-9]+(\s)+[0-9]*"/>
+              <xsd:pattern value=""/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="PROGRAM_NAME" minOccurs="0" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="60"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="EFX_FLD_FULFILLMENT_INFO_ARRAY_EFX_OP_GET_CONTRACT_PRICING_1216">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="EFX_FLD_FULFILLMENT_ID" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="60"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="RATE_PLAN_SELECTORS" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:complexContent>
+            <xsd:extension base="RATE_PLAN_SELECTORS_ARRAY_EFX_OP_GET_CONTRACT_PRICING_121612">
+              <xsd:attribute name="elem" type="xsd:string"/>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="RATE_PLAN_SELECTORS_ARRAY_EFX_OP_GET_CONTRACT_PRICING_121612">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="EFX_FLD_PRODUCT_CODE" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="60"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="QUANTITY_TIERS" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:complexContent>
+            <xsd:extension base="QUANTITY_TIERS_ARRAY_EFX_OP_GET_CONTRACT_PRICING_12161212">
+              <xsd:attribute name="elem" type="xsd:string"/>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="QUANTITY_TIERS_ARRAY_EFX_OP_GET_CONTRACT_PRICING_12161212">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="CONTRACT_AMOUNT" type="UNION_EFX_OP_GET_CONTRACT_PRICING" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="STEP_MAX" type="UNION_EFX_OP_GET_CONTRACT_PRICING" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="STEP_MIN" type="UNION_EFX_OP_GET_CONTRACT_PRICING" minOccurs="0" maxOccurs="1"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="BUFFER_EFX_OP_GET_CONTRACT_PRICING">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:hexBinary">
+        <xsd:attribute name="flags" type="xsd:string" use="optional"/>
+        <xsd:attribute name="size" type="xsd:string" use="optional"/>
+        <xsd:attribute name="offset" type="xsd:string" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="EMPTY_EFX_OP_GET_CONTRACT_PRICING">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UNION_EFX_OP_GET_CONTRACT_PRICING">
+    <xsd:union memberTypes="xsd:decimal EMPTY_EFX_OP_GET_CONTRACT_PRICING"/>
+  </xsd:simpleType>
+</xsd:schema>
